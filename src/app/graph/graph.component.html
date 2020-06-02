@@ -1,0 +1,19 @@
+
+
+<div class="container">
+    <div class="buttons">
+        <button (click)="addElement()"> Add </button>
+        <button (click)="removeElement()"> Remove </button>
+        <button (click)="bubbleSort()"> Sort </button>
+    </div>
+
+    <div class="number-holder"> 
+        <div *ngFor="let element of elements" >
+            <div class="number" [ngStyle]="rectangleClass(element)">
+                <p [ngStyle]="numberClass(element)"> {{ element }} </p>
+            </div>
+        </div>
+    </div>
+    
+</div>
+ 

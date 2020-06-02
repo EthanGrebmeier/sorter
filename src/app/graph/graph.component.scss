@@ -1,0 +1,25 @@
+ .container{
+     width: 50vw;
+     height: 50vh;
+     background-color: white;
+     border: .25 solid white;
+     border-radius: .4vw;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+ 
+ .number-holder{
+     display: flex;
+ }
+
+ .number{
+     background: grey;
+     width: 3vw;
+     display: flex;
+     justify-content: center;
+     p{
+        font-family: 'Hammersmith One', sans-serif;
+        color: white;
+     }
+}
