@@ -20,9 +20,12 @@ body{
 }
 
 .info{
+    display: flex;
     p{
         font-size: 3vw;
         margin: 0;
+        margin-right: 2vw;
     }
+    
     
 }
