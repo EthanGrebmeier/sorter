@@ -43,6 +43,8 @@ export class GraphComponent implements OnInit {
 
   sortInProgress: boolean = false;
 
+  bubble: boolean = false; 
+
   public comparisons: number = 0;
 
   
@@ -95,6 +97,7 @@ export class GraphComponent implements OnInit {
     this.resetComparisons();
     this.sortInProgress = true;
     if(sort == "Bubble"){
+      this.bubble = true; 
       return this.bubbleSort();
     }
     if(sort == "Selection"){
@@ -117,17 +120,18 @@ export class GraphComponent implements OnInit {
             let swap = this.elements[j];
             this.elements[j] = this.elements[j+1];
             this.elements[j].index = j;
-            swap.index = -j+1; 
+            swap.index += 1; 
             this.elements[j+1] = swap;
           }
           this.updateComparisons()
-          this.sortedIndex = this.sortedIndex + (this.sortedIndex - i);
+          this.sortedIndex = this.elements.length - i;
           if(i == this.elements.length - 2){
             console.log(this.elements);
             this.sortedIndex -= 2;
             this.selectedElementOne = 4000;
             this.selectedElementTwo = 4000;
             this.sortInProgress = false;
+            
           }
         })
         
@@ -176,7 +180,7 @@ export class GraphComponent implements OnInit {
       
       let swap = this.elements[i];
       let j = i-1; 
-      this.updateComparisons
+      this.updateComparisons();
 
       setTimeout( () => {
         while (j >= 0 && this.elements[j].value > swap.value){
@@ -225,10 +229,16 @@ export class GraphComponent implements OnInit {
     if (num.index == this.selectedElementTwo){
       return 'yellow';
     }
-    
-    if (num.index <= this.sortedIndex){
-      return '#7C77B9';
+    if (this.bubble){
+      if (num.index >= this.sortedIndex){
+        return '#7C77B9';
+      }
+    } else{
+      if (num.index <= this.sortedIndex){
+        return '#7C77B9';
+      }
     }
+    
     return '#8FBFE0';
     
   }
@@ -252,6 +262,7 @@ export class GraphComponent implements OnInit {
   }
 
   resetComparisons(){
+    this.bubble = false; 
     this.comparisons = 0;
     this.sendData.sendDataMethod(this.comparisons);
   }
