@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SendDataService } from '../send-data.service';
 
 
@@ -14,13 +14,13 @@ export class GraphComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private sendData: SendDataService) {
     this.form = this.formBuilder.group({
-      sorts: []
+      sorts: ["", [Validators.min(1)]]
     });
     this.sorts = [{index: '1', sort: 'Bubble' }, 
     {index: '2', sort: 'Selection'}, 
     {index: '3', sort: 'Insertion'}]
 
-    this.sendData.sendDataMethod(this.comparisons)
+    this.sendData.sendDataMethod(this.data)
    }
 
   ngOnInit(): void {
@@ -45,7 +45,11 @@ export class GraphComponent implements OnInit {
 
   bubble: boolean = false; 
 
-  public comparisons: number = 0;
+  data = {
+    comparisons: 0,
+    swaps: 0
+  }
+  
 
   
 
@@ -73,7 +77,7 @@ export class GraphComponent implements OnInit {
         
       
     }
-    this.resetComparisons();
+    this.reset()
     this.sortedIndex = -1;
     this.width = this.updateWidth();
     this.selectedElementOne = -1;
@@ -94,7 +98,7 @@ export class GraphComponent implements OnInit {
 
   sort(){
     let sort = this.form.getRawValue().sorts
-    this.resetComparisons();
+    this.reset()
     this.sortInProgress = true;
     if(sort == "Bubble"){
       this.bubble = true; 
@@ -122,8 +126,9 @@ export class GraphComponent implements OnInit {
             this.elements[j].index = j;
             swap.index += 1; 
             this.elements[j+1] = swap;
+            this.incrementSwaps()
           }
-          this.updateComparisons()
+          this.incrementComparisons()
           this.sortedIndex = this.elements.length - i;
           if(i == this.elements.length - 2){
             console.log(this.elements);
@@ -141,7 +146,6 @@ export class GraphComponent implements OnInit {
   }
 
   selectionSort(){
-    this.resetComparisons();
     for(let i = 0; i < this.elements.length; i++){
         
       setTimeout(() =>{
@@ -149,7 +153,7 @@ export class GraphComponent implements OnInit {
         this.sortedIndex = i;
         let min = i;
         for(let j = i+1; j < this.elements.length; j++){
-          this.updateComparisons();
+          this.incrementComparisons();
           if(this.elements[j].value < this.elements[min].value){
             min = j;
           }
@@ -163,6 +167,9 @@ export class GraphComponent implements OnInit {
         this.elements[min].index = min;
         this.elements[i] = swap;
         this.elements[i].index = i;
+        if(min != i){
+          this.incrementSwaps()
+        }
       }, i * 60)
 
       
@@ -175,29 +182,32 @@ export class GraphComponent implements OnInit {
 }
 
   insertionSort(){
-    this.resetComparisons();
     for(let i=1; i < this.elements.length; i++){
       
       let swap = this.elements[i];
       let j = i-1; 
-      this.updateComparisons();
+      
 
       setTimeout( () => {
+        this.incrementComparisons();
         while (j >= 0 && this.elements[j].value > swap.value){
           this.sortedIndex = i;
-          this.updateComparisons();
-  
+          this.incrementComparisons();
+          
+          
           
   
           this.elements[j+1] = this.elements[j];
-          this.elements[j+1].index += 1; 
+          //this.elements[j+1].index += 1; 
           
           j -= 1;
+          this.incrementSwaps()
             
         }
-
+        this.selectedElementOne = i; 
         this.selectedElementTwo = j;
         this.elements[j+1] = swap;
+        
         
       }, i * 60)
 
@@ -256,14 +266,32 @@ export class GraphComponent implements OnInit {
     return (40 / this.elements.length);
   }
 
-  updateComparisons(){
-    this.comparisons += 1;
-    this.sendData.sendDataMethod(this.comparisons);
+  updateData(){
+    this.sendData.sendDataMethod(this.data);
+  }
+
+  incrementSwaps(){
+    this.data.swaps += 1;
+  }
+
+  incrementComparisons(){
+    this.data.comparisons += 1
+  }
+
+  reset(){
+    this.resetComparisons();
+    this.resetSwaps();
   }
 
   resetComparisons(){
     this.bubble = false; 
-    this.comparisons = 0;
-    this.sendData.sendDataMethod(this.comparisons);
+    this.data.comparisons = 0;
+    this.sendData.sendDataMethod(this.data);
   }
+
+  resetSwaps(){
+    this.data.swaps = 0; 
+  }
+
+  
 }
