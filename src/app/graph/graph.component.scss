@@ -1,12 +1,75 @@
+body{
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons{
+    margin-top: .5vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    width:100vw;
+    height: 4vw;
+
+    button{
+       margin-right: 1vw;
+       margin-left: 1vw;
+       width: 12vw;
+       height: 7vh;
+       color: white;
+       background-color: transparent;
+       border: solid .3vw white;
+       cursor: pointer;
+   
+       font-family: 'Hammersmith One', sans-serif;
+       font-size: 2.4vw;
+   
+       transition: color 300ms, background 300ms;
+   }
+
+   select{
+       align-self: center;
+       width: 12vw;
+       background: transparent;
+
+       border: .3vw solid white;
+       height: 7vh;
+
+       cursor: pointer;
+
+       text-align: center;
+       font-size: 2.4vw;
+       color: white;
+       margin-left: 1vw;
+       margin-right: 1vw;
+
+   }
+   option{
+       text-align: center;
+   }
+}
+ 
  .container{
      width: 50vw;
-     height: 50vh;
-     background-color: white;
+     height: 55vh;
+     background-color: rgba($color: #ffffff, $alpha: .7);
      border: .25 solid white;
      border-radius: .4vw;
      display: flex;
      flex-direction: column;
      align-items: center;
+     
+
+     
+
+     select{
+         width: 10vw;
+     }
+
  }
  
  .number-holder{
@@ -14,8 +77,9 @@
  }
 
  .number{
-     background: grey;
-     width: 3vw;
+     background: #7C77B9;
+     width: 2.6vw;
+     margin-right: .1vw;
      display: flex;
      justify-content: center;
      p{

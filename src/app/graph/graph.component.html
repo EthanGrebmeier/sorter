@@ -1,19 +1,32 @@
 
-
-<div class="container">
+<body>
     <div class="buttons">
-        <button (click)="addElement()"> Add </button>
-        <button (click)="removeElement()"> Remove </button>
-        <button (click)="bubbleSort()"> Sort </button>
-    </div>
 
-    <div class="number-holder"> 
-        <div *ngFor="let element of elements" >
-            <div class="number" [ngStyle]="rectangleClass(element)">
-                <p [ngStyle]="numberClass(element)"> {{ element }} </p>
-            </div>
-        </div>
+        <button (click)="shuffleElements()" [disabled]="sortInProgress"> Shuffle </button>
+        <button (click)="sort()" [disabled]="sortInProgress"> Sort </button>
+        <form [formGroup]="form" (ngSubmit)="sort()"> 
+            
+            
+            <select formControlName="sorts" id="forms" [disabled]="sortInProgress">
+                <option *ngFor="let sort of sorts; let i = index" [value]="sorts[i].sort">
+                    {{sorts[i].sort}}
+                </option>
+            </select>
+        </form>
+        
     </div>
     
-</div>
+    <div class="container">
+        
+    
+        <div class="number-holder"> 
+            <div *ngFor="let element of elements" >
+                <div class="number" [ngStyle]="rectangleClass(element)">
+                    <p [ngStyle]="numberClass(element)"> {{ element }} </p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
  

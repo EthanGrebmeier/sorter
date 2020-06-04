@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SendDataService } from '../send-data.service';
 
 @Component({
   selector: 'app-sorter',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SorterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sendData: SendDataService) {
+    this.sendData.sendData$.subscribe((data) => {
+      this.comparisons = data; 
+    })
+   }
 
   ngOnInit(): void {
   }
+
+  public comparisons: number; 
 
 }
