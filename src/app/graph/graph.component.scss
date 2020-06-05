@@ -1,5 +1,6 @@
 body{
-    min-width: 100vw;
+    min-width: 100%;
+    min-height: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -8,6 +9,7 @@ body{
 
 .buttons{
     margin-top: .5vh;
+    margin-bottom: 4vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -22,13 +24,20 @@ body{
        height: 7vh;
        color: white;
        background-color: transparent;
-       border: solid .3vw white;
+       border: solid .3vh white;
        cursor: pointer;
    
        font-family: 'Hammersmith One', sans-serif;
-       font-size: 2.4vw;
+       font-size: 5vh;
    
        transition: color 300ms, background 300ms;
+
+       &:hover{
+           color: #14FFF7;
+           background-color: white;
+           transition: color 300ms, background 300ms;
+       }
+
    }
 
    select{
@@ -36,13 +45,13 @@ body{
        width: 12vw;
        background: transparent;
 
-       border: .3vw solid white;
+       border: .3vh solid white;
        height: 7vh;
 
        cursor: pointer;
 
        text-align: center;
-       font-size: 2.4vw;
+       font-size: 5vh;
        color: white;
        margin-left: 1vw;
        margin-right: 1vw;
@@ -79,7 +88,8 @@ body{
  .number{
      background: #7C77B9;
      width: 2.6vw;
-     margin-right: .4vw;
+     margin-right: .095vw;
+     margin-top: .05vh;
      display: flex;
      justify-content: center;
      p{
@@ -110,6 +120,10 @@ body{
         width: 80vw;
         margin-top: 5vh;
        
+    }
+
+    .number{
+        margin-right: .4vw;
     }
     
 }
