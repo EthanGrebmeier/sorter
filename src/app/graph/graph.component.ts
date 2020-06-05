@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { SendDataService } from '../../send-data.service';
+import { SendDataService } from '../send-data.service';
 
 
 @Component({
