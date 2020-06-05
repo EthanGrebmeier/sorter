@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { SendDataService } from '../send-data.service';
+import { SendDataService } from '../../send-data.service';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class GraphComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private sendData: SendDataService) {
     this.form = this.formBuilder.group({
-      sorts: ["", [Validators.min(1)]]
+      sorts: ["", [Validators.required, Validators.min(1)]]
     });
     this.sorts = [{index: '1', sort: 'Bubble' }, 
     {index: '2', sort: 'Selection'}, 
@@ -31,6 +31,7 @@ export class GraphComponent implements OnInit {
     }
 
     this.width = this.updateWidth();
+
     
   }
 
@@ -98,9 +99,10 @@ export class GraphComponent implements OnInit {
 
   sort(){
     let sort = this.form.getRawValue().sorts
+    console.log(sort);
     this.reset()
     this.sortInProgress = true;
-    if(sort == "Bubble"){
+    if(sort == "Bubble" || sort == ""){
       this.bubble = true; 
       return this.bubbleSort();
     }
