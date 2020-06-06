@@ -10,13 +10,13 @@ export class SorterComponent implements OnInit {
 
   constructor(private sendData: SendDataService) {
     this.sendData.sendData$.subscribe((data) => {
-      this.comparisons = data; 
+      this.data = data; 
     })
    }
 
   ngOnInit(): void {
   }
 
-  public comparisons: number; 
+  public data; 
 
 }
