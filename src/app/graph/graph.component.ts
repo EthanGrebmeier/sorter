@@ -140,7 +140,7 @@ export class GraphComponent implements OnInit {
             this.sortInProgress = false;
             
           }
-        })
+        }, i * 60)
         
       }
 
