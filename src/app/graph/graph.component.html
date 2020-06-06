@@ -8,7 +8,7 @@
             
             
             <select formControlName="sorts" id="forms" [disabled]="sortInProgress">
-                <option *ngFor="let sort of sorts; let i = index" [value]="sorts[i].sort">
+                <option *ngFor="let sort of sorts; let i = index" (value)="sorts[i].sort">
                     {{sorts[i].sort}}
                 </option>
             </select>

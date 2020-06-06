@@ -41,6 +41,7 @@ body{
    }
 
    select{
+       
        align-self: center;
        width: 12vw;
        background: transparent;
@@ -57,6 +58,8 @@ body{
        margin-right: 1vw;
 
    }
+
+   select::-ms-expand { display: block; }
 
 
     option{
