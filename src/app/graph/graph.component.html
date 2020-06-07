@@ -2,17 +2,24 @@
 <body>
     <div class="buttons">
 
+        
+
+        <div class="selectSort"> 
+            <label> Algorithm: </label>
+            <form [formGroup]="form" (ngSubmit)="sort()"> 
+            
+            
+                <select formControlName="sorts" id="forms" [disabled]="sortInProgress">
+                    <option *ngFor="let sort of sorts; let i = index" (value)="sorts[i].sort">
+                        {{sorts[i].sort}}
+                    </option>
+                </select>
+            </form>
+        </div>
+
         <button (click)="shuffleElements()" [disabled]="sortInProgress"> Shuffle </button>
         <button (click)="sort()" [disabled]="sortInProgress"> Sort </button>
-        <form [formGroup]="form" (ngSubmit)="sort()"> 
-            
-            
-            <select formControlName="sorts" id="forms" [disabled]="sortInProgress">
-                <option *ngFor="let sort of sorts; let i = index" (value)="sorts[i].sort">
-                    {{sorts[i].sort}}
-                </option>
-            </select>
-        </form>
+        
         
     </div>
     
