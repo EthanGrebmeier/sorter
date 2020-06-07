@@ -9,26 +9,28 @@ body{
 
 .buttons{
     margin-top: .5vh;
-    margin-bottom: 4vh;
+    margin-bottom: 2vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
 
     width:100vw;
-    height: 4vh;
+    height: 4rem;
+
+
 
     button{
        margin-right: 1vw;
        margin-left: 1vw;
-       width: 12vw;
-       height: 7vh;
+       width: 13.3vw;
+       height: 4rem;
        color: white;
        background-color: transparent;
        border: solid .3vh white;
        cursor: pointer;
    
        font-family: 'Hammersmith One', sans-serif;
-       font-size: 5vh;
+       font-size: 2.8vw;
    
        transition: color 300ms, background 300ms;
 
@@ -40,26 +42,41 @@ body{
 
    }
 
+
+   .selectSort{
+       display: flex;
+       align-items: center;
+   }
+
+   label{
+       font-size: 2.8vw;
+       color: white;
+       
+   }
+
+
+
    select{
        
        align-self: center;
-       width: 12vw;
+       width: 13.3vw;
        background: transparent;
 
        border: .3vh solid white;
-       height: 7vh;
+       border-radius: .7vh;
+       height: 4rem;
 
        cursor: pointer;
 
        text-align: center;
-       font-size: 5vh;
+       font-size: 2.8vw;
        color: white;
        margin-left: 1vw;
        margin-right: 1vw;
 
    }
 
-   select::-ms-expand { display: block; }
+   
 
 
     option{
@@ -76,13 +93,6 @@ body{
      display: flex;
      flex-direction: column;
      align-items: center;
-     
-
-     
-
-     
-
-     
 
  }
  
@@ -107,23 +117,33 @@ body{
 
     .buttons{
         width: 100vw;
-        height: 2vh;
+        height: 2rem;
+        
         button{
-            width: 26vw;
-            height: 5vh;
-            font-size: 5vw;
+            width: 21vw;
+            height: 2rem;
+            font-size: 1.4rem;
+        }
+
+        label{
+            align-self: center;
+            font-size: 1.4rem;
+            color: white;
+            
         }
 
         select{
-            height: 5vh;
-            width: 26vw;
-            font-size: 5vw;
+            height: 2rem;
+            width: 21vw;
+            font-size: 1.4rem;
         }
     }
 
+    
+
     .container{
         width: 80vw;
-        margin-top: 5vh;
+        margin-top: 2vh;
        
     }
 
