@@ -1,4 +1,6 @@
 $font1: 'Hammersmith One', sans-serif;
+$font2: 'Montserrat', sans-serif;
+
 
 body{
     min-width: 100vw;
@@ -16,7 +18,7 @@ body{
     margin: 0;
     font-size: 18vh;
     color: white;
-    text-shadow: -.4vw .4vw #000000;
+    text-shadow: -.4vh .4vh #676767;
     
     text-align: center;
 }
@@ -24,6 +26,7 @@ body{
 .info{
     display: flex;
     p{
+        font-family: $font2;
         font-size: 2.6rem;
         margin: 0;
         margin-right: 2vw;
